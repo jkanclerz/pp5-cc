@@ -8,6 +8,7 @@ public class CreditCard {
     private String cardNumber;
     private BigDecimal creditLimit;
     private String slogan;
+    private BigDecimal cardBalance;
 
     public CreditCard(String cardNumber) {
         this.cardNumber = cardNumber;
@@ -19,6 +20,7 @@ public class CreditCard {
         }
 
         creditLimit = newLimit;
+        cardBalance = creditLimit;
     }
 
     public BigDecimal getLimit() {
@@ -26,10 +28,10 @@ public class CreditCard {
     }
 
     public void withdraw(BigDecimal money) {
-
+        cardBalance = cardBalance.subtract(money);
     }
 
     public BigDecimal currentBalance() {
-        return BigDecimal.valueOf(500);
+        return cardBalance;
     }
 }
