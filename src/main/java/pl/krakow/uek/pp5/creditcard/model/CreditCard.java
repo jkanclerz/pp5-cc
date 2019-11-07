@@ -5,7 +5,7 @@ import pl.krakow.uek.pp5.creditcard.model.exceptions.NotEnoughMoneyException;
 
 import java.math.BigDecimal;
 
-public class CreditCard {
+class CreditCard {
     private String cardNumber;
     private BigDecimal creditLimit;
     private String slogan;
