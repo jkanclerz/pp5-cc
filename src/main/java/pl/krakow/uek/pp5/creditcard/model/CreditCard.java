@@ -1,6 +1,7 @@
 package pl.krakow.uek.pp5.creditcard.model;
 
 import pl.krakow.uek.pp5.creditcard.model.exceptions.CreditBelowMinimumException;
+import pl.krakow.uek.pp5.creditcard.model.exceptions.NotEnoughMoneyException;
 
 import java.math.BigDecimal;
 
@@ -28,6 +29,10 @@ public class CreditCard {
     }
 
     public void withdraw(BigDecimal money) {
+        if (currentBalance().compareTo(money) == -1) {
+            throw new NotEnoughMoneyException();
+        }
+
         cardBalance = cardBalance.subtract(money);
     }
 

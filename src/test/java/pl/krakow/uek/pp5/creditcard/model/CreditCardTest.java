@@ -3,6 +3,7 @@ package pl.krakow.uek.pp5.creditcard.model;
 import org.junit.Assert;
 import org.junit.Test;
 import pl.krakow.uek.pp5.creditcard.model.exceptions.CreditBelowMinimumException;
+import pl.krakow.uek.pp5.creditcard.model.exceptions.NotEnoughMoneyException;
 
 import java.math.BigDecimal;
 
@@ -50,8 +51,15 @@ public class CreditCardTest {
         card2.withdraw(BigDecimal.valueOf(200));
         Assert.assertEquals(card1.currentBalance(), BigDecimal.valueOf(500));
         Assert.assertEquals(card2.currentBalance(), BigDecimal.valueOf(800));
+    }
 
+    @Test(expected = NotEnoughMoneyException.class)
+    public void denyWithdrawBelowCurrentBalance() {
+        CreditCard card = new CreditCard("1234-5678");
+        card.assignLimit(BigDecimal.valueOf(1000));
 
+        card.withdraw(BigDecimal.valueOf(600));
+        card.withdraw(BigDecimal.valueOf(600));
     }
 
 }
