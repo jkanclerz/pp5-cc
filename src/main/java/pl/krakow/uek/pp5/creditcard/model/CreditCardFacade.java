@@ -6,8 +6,4 @@ public class CreditCardFacade {
     public void handle(WithdrawCommand withdrawCommand) {
 
     }
-
-    public void handle(RepayCommand withdrawCommand) {
-
-    }
 }
